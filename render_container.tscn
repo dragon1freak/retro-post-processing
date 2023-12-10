@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://ynrj00mq2hbf"]
+
+[ext_resource type="Shader" path="res://retropp.gdshader" id="1_cfr7r"]
+[ext_resource type="PackedScene" uid="uid://br12j2dt5klop" path="res://world.tscn" id="2_y6ksb"]
+
+[sub_resource type="Gradient" id="Gradient_7u54f"]
+offsets = PackedFloat32Array(0, 0.352459, 0.704918, 1)
+colors = PackedColorArray(0.0833335, 0, 1, 1, 1, 0, 0, 1, 0.0166667, 1, 0, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vjrtl"]
+gradient = SubResource("Gradient_7u54f")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmjo5"]
+shader = ExtResource("1_cfr7r")
+shader_parameter/change_color_depth = false
+shader_parameter/target_color_depth = 3
+shader_parameter/dithering = true
+shader_parameter/scale_resolution = false
+shader_parameter/target_resolution_scale = 3
+shader_parameter/enable_recolor = false
+shader_parameter/to_gradient = SubResource("GradientTexture1D_vjrtl")
+
+[node name="RenderContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_kmjo5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="World" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_y6ksb")]
