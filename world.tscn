@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://br12j2dt5klop"]
+
+[ext_resource type="Texture2D" uid="uid://byaplberrxeav" path="res://image.png" id="1_3omft"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhcj8"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o1a6d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_p0jaf"]
+size = Vector3(17, 10.51, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbw8a"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0eut0"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.91212, 0.245554, -0.328238, 0, 0.800731, 0.599024, 0.409923, -0.546381, 0.730363, 0, 0, 0)
+light_energy = 0.677
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_xhcj8")
+mesh = SubResource("BoxMesh_o1a6d")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("BoxMesh_p0jaf")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+material_override = SubResource("StandardMaterial3D_tbw8a")
+mesh = SubResource("BoxMesh_o1a6d")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+material_override = SubResource("StandardMaterial3D_0eut0")
+mesh = SubResource("BoxMesh_o1a6d")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.33448)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -226.0
+offset_right = 226.0
+offset_bottom = 82.0
+grow_horizontal = 2
+texture = ExtResource("1_3omft")
